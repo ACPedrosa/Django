@@ -21,7 +21,7 @@
                 <h2>{{request.user.username}}</h2>
             </div>
             <div class="qr-code">
-                <img src="{% static 'assets/img/QRCode.png' %}" alt="QR Code">
+                <img src="{% url 'gerar_qrcode' cpf=participante.usuario.cpf %}" alt="QR Code">
             </div>
         </div>
 

@@ -1,18 +1,18 @@
 from .templates import (
-    home,
+    home_view,
     cadastro_view,
-    sucess_page,
-    participante_page,
+    sucess_view,
+    participante_view,
     perfil_view
 )
 
 from .api import ParticipanteListView, ParticipanteDetailView
 
 __all__ = [
-    "home",
+    "home_view",
     "cadastro_view",
-    "sucess_page",
-    "participante_page",
+    "sucess_view",
+    "participante_view",
     "perfil_view",
     "ParticipanteListView",
     "ParticipanteDetailView",
