@@ -1,4 +1,4 @@
-import qrcode
+import qrcode # type: ignore
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from app.models import Participante
