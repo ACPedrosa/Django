@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Libre Baskerville", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2CABA3, #30174D);
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 60%;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    text-align: center;
+}
+
+.profile-header {
+    margin-bottom: 2rem;
+}
+
+.profile-header h1 {
+    font-size: 2.5rem;
+    color: #30174D;
+    position: relative;
+}
+
+.profile-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #6962AD;
+    margin: 0.5rem auto;
+    border-radius: 5px;
+}
+
+.profile-info {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.profile-info h2 {
+    font-size: 1.8rem;
+    color: #2CABA3;
+    margin-bottom: 1rem;
+}
+
+.info-group {
+    margin-bottom: 1rem;
+}
+
+.info-group label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6962AD;
+    margin-right: 0.5rem;
+}
+
+.info-group span {
+    font-size: 1.2rem;
+    color: #30174D;
+}
+
+.qr-code {
+    width: 250px; /* Largura fixa para o QR Code */
+    height: 250px; /* Altura fixa para o QR Code */
+    margin: 0 auto; /* Centraliza o QR Code */
+    padding: 20px;
+    display: flex; /* Para alinhar ao centro */
+    justify-content: center;
+    align-items: center;
+}
+
+.qr-code img {
+    width: 100%; /* Adapta o tamanho da imagem ao contêiner */
+    height: 100%;
+    object-fit: contain; /* Garante que a imagem não seja cortada */
+    border: 2px solid #ccc; /* Opcional: borda para destacar o QR Code */
+    border-radius: 10px; /* Opcional: bordas arredondadas */
+}
+.profile-actions {
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile-actions button {
+    padding: 0.75rem 3rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    margin-top: 35px;
+    background-color: #6962AD;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.profile-actions button:hover {
+    background-color: #2CABA3;
+}
+
+.profile-actions a {
+    text-decoration: none;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .profile-header h1 {
+        font-size: 2rem;
+    }
+
+    .profile-info h2 {
+        font-size: 1.5rem;
+    }
+
+    .info-group label,
+    .info-group span {
+        font-size: 1rem;
+    }
+
+    .profile-actions button {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
