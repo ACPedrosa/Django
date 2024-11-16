@@ -18,7 +18,7 @@
 
         <div class="profile-card">
             <div class="user-info">
-                <h2>Fulano de Tal</h2>
+                <h2>{{request.user.username}}</h2>
             </div>
             <div class="qr-code">
                 <img src="{% static 'assets/img/QRCode.png' %}" alt="QR Code">
