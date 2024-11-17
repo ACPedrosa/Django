@@ -44,8 +44,8 @@
                     </div>
 
                     <div class="input-box">
-                        <label for="number">Celular</label>
-                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
+                        <label for="cpf">CPF</label>
+                        <input id="cpf" type="text" name="cpf" placeholder="XXX-XXX-XXX-XX" required>
                     </div>
 
                     <div class="input-box">
@@ -57,6 +57,7 @@
                         <label for="confirmPassword">Confirme sua Senha</label>
                         <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Digite sua senha novamente" required>
                     </div>
+
                 </div>
 
                 <div class="gender-inputs">
@@ -98,7 +99,7 @@
     </div>
     
     <!-- Importação do JS separado -->
-    <script src="{% static 'js/script_cad.js' %}"></script>
+    <script src="{% static 'js/script_cad.js' %}" defer></script>
 </body>
 
 </html>

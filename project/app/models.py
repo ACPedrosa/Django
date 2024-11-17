@@ -30,12 +30,16 @@ class Usuario(models.Model):
     
     def clean(self):
         super().clean()
-        # Validação de CPF
-        if self.cpf and not re.match(r'^\d{3}\.\d{3}\.\d{3}-\d{2}$', self.cpf):
-            raise ValidationError("O CPF deve estar no formato xxx.xxx.xxx-xx.")
-        # Validação de Data de Nascimento
-        if self.data_nascimento and self.data_nascimento > timezone.now().date():
-            raise ValidationError("A data de nascimento não pode ser no futuro.")
+        # Validação de CPF (com ou sem pontos e hífen)
+        if self.cpf:
+            # Remove qualquer caractere não numérico
+            cpf = re.sub(r'\D', '', self.cpf)  
+            if len(cpf) != 11:
+                raise ValidationError("O CPF deve ter 11 dígitos.")
+            
+            # Verifica a validade do CPF
+            if not re.match(r'^\d{11}$', cpf):  # Verifica apenas os 11 dígitos numéricos
+                raise ValidationError("O CPF não é válido.")
 
 # Modelo para Participante
 class Participante(models.Model):
