@@ -53,7 +53,7 @@ body{
 
 .profile-card{
     background-color: #fff;
-    width: 400px;
+    width: 500px;
     padding: 3rem;
     border-radius: 10px;
     min-height: 400px;
@@ -145,7 +145,15 @@ body{
 }
 
 .row .content span{
-    font-size: 15px;
+    font-size: 17px;
+}
+
+.row .content h5{
+    max-width: 200px; /* Ajuste para o tamanho desejado */
+    white-space: nowrap; /* Não permite quebra de linha */
+    overflow: hidden; /* Oculta o excesso de texto */
+    text-overflow: ellipsis; /* Adiciona reticências (...) */
+    margin: 0 auto; /* Centraliza o texto */
 }
 
 .edit {
