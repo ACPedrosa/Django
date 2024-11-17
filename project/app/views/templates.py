@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from app.models import Atividade
  # Views baseadas em funções (renderização)
 
 def home_view(request):
@@ -16,7 +17,8 @@ def sucess_view(request):
 
 @login_required
 def participante_view(request):
-    return render(request, 'participante.html')
+    atividades = Atividade.objects.all()  # Recupera todas as atividades
+    return render(request, 'participante.html', {'atividades': atividades})
 
 @login_required
 def perfil_view(request):
@@ -25,3 +27,4 @@ def perfil_view(request):
 @login_required
 def carteirinha_view(request):
     return render(request, 'carteirinha.html')
+
