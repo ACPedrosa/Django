@@ -145,3 +145,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_REDIRECT_URL = 'participante'  # Página para onde o usuário será redirecionado após o login bem-sucedido
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
