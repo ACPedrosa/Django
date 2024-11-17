@@ -44,8 +44,13 @@
                     </div>
 
                     <div class="input-box">
+                        <label for="number">Celular</label>
+                        <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required>
+                    </div>
+
+                    <div class="input-box">
                         <label for="cpf">CPF</label>
-                        <input id="cpf" type="text" name="cpf" placeholder="XXX-XXX-XXX-XX" required>
+                        <input id="cpf" type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" required>
                     </div>
 
                     <div class="input-box">
@@ -99,7 +104,7 @@
     </div>
     
     <!-- Importação do JS separado -->
-    <script src="{% static 'js/script_cad.js' %}" defer></script>
+    <script src="{% static 'js/script_cad.js' %}"></script>
 </body>
 
 </html>

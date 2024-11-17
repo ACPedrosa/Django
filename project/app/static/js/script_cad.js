@@ -1,82 +1,87 @@
-document.getElementById('cadastro-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Impede o envio padrão do formulário
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('cadastro-form').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    // Coletar os dados do formulário
-    const primeiroNome = document.getElementById('firstname').value;
-    const sobrenome = document.getElementById('lastname').value;
-    const email = document.getElementById('email').value;
-    const cpf = document.getElementById('cpf').value;
-    const senha = document.getElementById('password').value;
-    const confirmarSenha = document.getElementById('confirmPassword').value;
-    const genero = document.querySelector('input[name="gender"]:checked');
+        // Coletar os dados do formulário
+        const primeiroNome = document.getElementById('firstname').value;
+        const sobrenome = document.getElementById('lastname').value;
+        const email = document.getElementById('email').value;
+        const celular = document.getElementById('number').value;
+        const cpf = document.getElementById('cpf').value;
+        const senha = document.getElementById('password').value;
+        const confirmarSenha = document.getElementById('confirmPassword').value;
+        const genero = document.querySelector('input[name="gender"]:checked');
 
-    // Coletar URL de sucesso
-    const successUrl = document.body.getAttribute('data-success-url');
-    console.log("Redirecionando para:", successUrl);
+        console.log(cpf);
+        // Coletar URL de sucesso
+        const successUrl = document.body.getAttribute('data-success-url');
+        console.log("Redirecionando para:", successUrl);
 
-    // Validações adicionais
-    if (!validarCPF(cpf)) {
-        alert("CPF inválido!");
-        return;
-    }
-
-    if (!genero) {
-        alert('Por favor, selecione um gênero.');
-        return;
-    }
-
-    // Verificação da senha (exemplo de validação mais forte)
-    if (senha.length !== 12 || !/[A-Za-z]/.test(senha) || !/\d/.test(senha)) {
-        alert('A senha deve ter 12 caracteres, incluindo pelo menos uma letra e um número!');
-        return;
-    }
-
-    // Verifica se as senhas coincidem
-    if (senha !== confirmarSenha) {
-        alert('As senhas não coincidem!');
-        return;
-    }
-
-    // Dados a serem enviados
-    const data = {
-        usuario: {
-            nome: `${primeiroNome} ${sobrenome}`,
-            email: email,
-            cpf: cpf,
-            senha: senha,
-            sexo: genero.value,  // Valor selecionado do gênero
+        // Validações adicionais
+        if (!validarCPF(cpf)) {
+            alert("CPF inválido!");
+            return;
         }
-    };
 
-    // Exibir no console os dados enviados (para debugging)
-    console.log('Dados enviados:', JSON.stringify(data));
-
-    // Enviar os dados para o backend
-    fetch('/participantes/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value,  // CSRF token
-        },
-        body: JSON.stringify(data),
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(err => {
-                throw new Error(err.message || 'Erro no cadastro');
-            });
+        if (!genero) {
+            alert('Por favor, selecione um gênero.');
+            return;
         }
-        return response.json();
-    })
-    .then(data => {
-        alert('Cadastro realizado com sucesso!');  // Notifica o usuário
-        document.getElementById('cadastro-form').reset();  // Limpar o formulário após sucesso
-        setTimeout(() => {
-            window.location.href = successUrl;  // Redirecionar após 1 segundo
-        }, 1000); // Atraso de 1000 milissegundos (1 segundo)
-    })
-    .catch(error => {
-        alert('Erro: ' + error.message);
+
+        // Verificação da senha (exemplo de validação mais forte)
+        if (senha.length !== 12 || !/[A-Za-z]/.test(senha) || !/\d/.test(senha)) {
+            alert('A senha deve ter 12 caracteres, incluindo pelo menos uma letra e um número!');
+            return;
+        }
+
+        // Verifica se as senhas coincidem
+        if (senha !== confirmarSenha) {
+            alert('As senhas não coincidem!');
+            return;
+        }
+
+        // Dados a serem enviados
+        const data = {
+            usuario: {
+                nome: `${primeiroNome} ${sobrenome}`,
+                email: email,
+                telefone: celular,
+                cpf: cpf,
+                senha: senha,
+                sexo: genero.value,  // Valor selecionado do gênero
+            }
+        };
+
+        // Exibir no console os dados enviados (para debugging)
+        console.log('Dados enviados:', JSON.stringify(data));
+
+        // Enviar os dados para o backend
+        fetch('/participantes/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('input[name="csrfmiddlewaretoken"]').value,  // CSRF token
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(err => {
+                    throw new Error(err.message || 'Erro no cadastro');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert('Cadastro realizado com sucesso!');  // Notifica o usuário
+            document.getElementById('cadastro-form').reset();  // Limpar o formulário após sucesso
+            setTimeout(() => {
+                window.location.href = successUrl;  // Redirecionar após 1 segundo
+            }, 1000); // Atraso de 1000 milissegundos (1 segundo)
+        })
+        .catch(error => {
+            alert('Erro: ' + error.message);
+        });
     });
 });
 
