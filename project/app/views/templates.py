@@ -11,13 +11,12 @@ def cadastro_view(request):
 def login_view(request):
     return render(request, 'login.html') 
 
+def sucess_view(request):
+    return render(request, 'sucesso_cad.html')
+
 @login_required
 def participante_view(request):
     return render(request, 'participante.html')
-
-@login_required
-def sucess_view(request):
-    return render(request, 'sucesso_cad.html')
 
 @login_required
 def perfil_view(request):
@@ -26,4 +25,3 @@ def perfil_view(request):
 @login_required
 def carteirinha_view(request):
     return render(request, 'carteirinha.html')
-

@@ -29,6 +29,10 @@ ALLOWED_HOSTS = []
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://localhost:8000', 
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -139,4 +143,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 #Configurações Login e Logout
 LOGOUT_REDIRECT_URL = 'home'
-LOGIN_REDIRECT_URL = 'participante'
+LOGIN_REDIRECT_URL = 'participante'  # Página para onde o usuário será redirecionado após o login bem-sucedido
+

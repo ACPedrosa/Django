@@ -42,14 +42,16 @@
                         <a href="index_cad.html">Cadastrar-se</a>
                     </button> -->
                 </div>
-
+                <input type="hidden" name="next" value="{{ next }}">
               <!--  <div class="back-button">
                     <button class="btn">
                         <a href="index.html">Voltar</a>
                     </button>
                 </div> -->
-                {% for k, v in forms.erros.items %}
-                    {{v}}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
                 {% endfor %}
             </form>
         </div>
