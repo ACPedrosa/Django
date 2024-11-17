@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.libre-baskerville-bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Libre Baskerville", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #2CABA3, #30174D);
+    height: 100%; /* Garantir que o body tenha altura total */
+    width: 100%;
+}
+
+.container {
+    width: 60%;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 5rem;
+    margin: 2%;
+    text-align: center;
+}
+
+.edit-header h1 {
+    font-size: 2.5rem;
+    color: #30174D;
+    position: relative;
+}
+
+.edit-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #6962AD;
+    margin: 0.5rem auto;
+    border-radius: 5px;
+}
+
+.edit-form {
+    text-align: left;
+    margin-top: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    font-size: 1.2rem;
+    color: #6962AD;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #6962AD;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    background-color: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: 1px solid #2CABA3;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.form-actions .save-btn,
+.form-actions .cancel-btn {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-actions .save-btn {
+    background-color: #6962AD;
+    color: white;
+}
+
+.form-actions .save-btn:hover {
+    background-color: #2CABA3;
+}
+
+.form-actions .cancel-btn {
+    background-color: #d9534f;
+    color: white;
+}
+
+.form-actions .cancel-btn:hover {
+    background-color: #c9302c;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .edit-header h1 {
+        font-size: 2rem;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+    }
+
+    .form-actions .save-btn,
+    .form-actions .cancel-btn {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}

@@ -25,6 +25,10 @@ def perfil_view(request):
     return render(request, 'perfil.html')
 
 @login_required
+def edit_view(request):
+    return render(request, 'edit_perfil.html')
+
+@login_required
 def carteirinha_view(request):
     return render(request, 'carteirinha.html')
 

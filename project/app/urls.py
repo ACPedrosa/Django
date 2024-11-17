@@ -1,5 +1,5 @@
 from django.urls import path, include
-from app.views.templates import home_view, cadastro_view, participante_view, sucess_view, perfil_view, carteirinha_view, atividade_detalhes
+from app.views.templates import home_view, cadastro_view, participante_view, sucess_view, perfil_view, edit_view, carteirinha_view, atividade_detalhes
 from app.views.qrcode import gerar_qrcode 
 from app.views.api import ParticipanteListView, ParticipanteDetailView
 
@@ -10,6 +10,7 @@ urlpatterns = [
     path('participante/', participante_view, name='participante'),
     path('sucesso/', sucess_view, name='sucesso'),
     path('perfil/', perfil_view, name='perfil'),
+    path('edit_perfil/', edit_view, name='edit_perfil'),
     path('carteirinha/', carteirinha_view, name='carteirinha'),
     path('qrcode/<str:cpf>/', gerar_qrcode, name='gerar_qrcode'),
     path('atividade/<int:atividade_id>/',atividade_detalhes, name='atividade_detalhes'),

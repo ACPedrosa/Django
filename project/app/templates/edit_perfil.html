@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/css/edit_perfil.css' %}">
+    <title>Editar Perfil</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="edit-header">
+            <h1>Editar Perfil</h1>
+        </div>
+
+        <form class="edit-form">
+            {% csrf_token %}
+            <!-- Campo para o primeiro nome -->
+            <div class="form-group">
+                <label for="firstname">Primeiro Nome</label>
+                <input type="text" id="username" name="username" placeholder="{{ user.username }}" required>
+            </div>
+
+            <!-- Campo para o e-mail -->
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="{{ user.email|default:'Não informado' }}" required>
+            </div>
+
+            <!-- Campo para o celular -->
+            <div class="form-group">
+                <label for="number">Celular</label>
+                <input type="tel" id="number" name="number" placeholder="{{ user.telefone|default:'Não informado' }}" required>
+            </div>
+
+            <!-- Campo para o CPF -->
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" placeholder="{{ user.cpf|default:'Não informado' }}" required>
+            </div>
+
+            <!-- Campo para a descrição -->
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea id="descricao" name="descricao" required>{{ user.descricao|default:'Não informado' }}</textarea>
+            </div>
+
+            <!-- Campo para as alergias -->
+            <div class="form-group">
+                <label for="alergias">Alergias</label>
+                <input type="text" id="alergias" name="alergias" placeholder="{{ user.alergias|default:'Não informado' }}"">
+            </div>
+
+            <!-- Campo para o endereço -->
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" id="endereco" name="endereco" placeholder="{{ user.endereco|default:'Não informado' }}"" required>
+            </div>
+
+            <!-- Campo para a data de nascimento -->
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento</label>
+                <input type="date" id="data_nascimento" name="data_nascimento" placeholder="{{ user.data_nascimento|default:'Não informado' }}" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="save-btn">Salvar</button>
+                <a href="{% url 'perfil' %}">
+                    <button type="button" class="cancel-btn">Cancelar</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
