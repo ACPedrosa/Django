@@ -28,3 +28,8 @@ def perfil_view(request):
 def carteirinha_view(request):
     return render(request, 'carteirinha.html')
 
+@login_required
+def atividade_detalhes(request, atividade_id):
+    atividade = Atividade.objects.get(id=atividade_id)
+    turmas = atividade.turma_set.all()  # Recupera todas as turmas associadas à atividade
+    return render(request, 'atividade.html', {'atividade': atividade, 'turmas': turmas})

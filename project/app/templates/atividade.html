@@ -1,11 +1,35 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Detalhes da Atividade</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    
+
+    <div class="container">
+        <h1>Atividade: {{ atividade.nome }}</h1>
+        <p><strong>Descrição:</strong> {{ atividade.descricao }}</p>
+        <p><strong>Carga Horária:</strong> {{ atividade.carga_horaria }} horas</p>
+        <p><strong>Profissional Responsável:</strong> {{ atividade.profissional_responsavel }}</p>
+        
+        <h2>Turmas Disponíveis</h2>
+        {% if turmas %}
+            <ul>
+                {% for turma in turmas %}
+                    <li>
+                        <strong>Nome:</strong> {{ turma.nome }}<br>
+                        <strong>Horário de Início:</strong> {{ turma.horario_inicio }}<br>
+                        <strong>Horário de Término:</strong> {{ turma.horario_fim }}<br>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Não há turmas disponíveis para esta atividade.</p>
+        {% endif %}
+    </div>
+
 </body>
 </html>

@@ -65,7 +65,7 @@
                     <img src="{% static 'assets/img/astronomia.png' %}" alt="{{ atividade.nome }}">
                     <h2>{{ atividade.nome }}</h2>
                     <p>{{ atividade.descricao }}</p>
-                    <a href="#" class="btn">Saiba Mais</a>
+                    <a href="{% url 'atividade_detalhes' atividade_id=atividade.id %}" class="btn">Saiba Mais</a>
                 </div>
             {% endfor %}
         </div>
