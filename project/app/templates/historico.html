@@ -1,11 +1,58 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Histórico - Participante</title>
+    <link rel="stylesheet" href="{% static 'assets/css/historico.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <ul class="menu">
+                <li class="active">
+                    <a href="{% url 'participante' %}"> 
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <h2>{{ request.user.username }}</h2>
+            </div>
+
+            <div class="user--info">
+                <div class="search--box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="search" placeholder="Pesquise...">
+                </div>
+            </div>
+        </div>
+
+        <!-- Histórico de atividades -->
+        <h1>Histórico de Atividades</h1>
+        <div class="activities">
+            {% for atividade in historico_atividades %}
+                <div class="activity">
+                    <img src="{% static 'assets/img/astronomia.png' %}" alt="{{ atividade.nome }}">
+                    <h2>{{ atividade.nome }}</h2>
+                    <p><strong>Presença:</strong> {{ atividade.presenca }}%</p>
+                    <p><strong>Certificado:</strong> {% if atividade.certificado %} Obtido {% else %} Não obtido {% endif %}</p>
+                    <a href="{% url 'atividade_detalhes' atividade_id=atividade.id %}" class="btn">Ver Detalhes</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/script_participante.js' %}"></script>
 </body>
 </html>
